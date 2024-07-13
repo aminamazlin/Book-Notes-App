@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container addBook">
+    <div class="addBook-details">
+        <% if (locals.book) { %>
+            <h1 ><%= heading %></h1>
+            <form id="editBook" class="modifyForm" method="post" action="/edit">
+                <input type="text" name="title"  value="<%=book.title%>" required>
+    
+                <input type= "text" name="isbn" value="<%=book.cover_isbn %>" required >
+                <select id= "rating" name= "rating" value ="<%= book.rating %>" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <textarea class="textarea" name="notes" rows="10" required><%= book.notes %></textarea>
+                <textarea class="textarea" name="review" rows="10" required> <%= book.review_text%> </textarea>    
+    
+              <button  name="updatedBookId" value="<%=book.id%>" class="full-width-btn" type="submit"> <%= submit %> </button>
+            </form>
+
+        <% } else { %>
+            <h1 >Add a book</h1>
+            <form id="newBook"  class="modifyForm" method="post" action="/add">
+                <input type="text" name="title" placeholder="Title" required>
+    
+                <input type="text" name="isbn" placeholder="Enter the isbn of the book" required>
+                <select id="rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <textarea class="textarea" name="notes" placeholder="Enter your book notes" rows="10" required></textarea>
+                <textarea class="textarea" name="review" placeholder="Write your review" rows="10" required></textarea>    
+    
+              <button class="full-width-btn" type="submit"> Submit </button>
+            </form>
+        </div>
+        <% } %>
+    </div>
+</div>
+   
+
+<%- include('partials/footer.ejs') %>

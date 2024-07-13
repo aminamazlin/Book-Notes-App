@@ -1,0 +1,77 @@
+<%- include('partials/header.ejs') %>
+
+<div id="intro-title" class="container">
+  <h2>
+    Welcome to my digital library
+  </h2>
+</div>
+
+<div class="container sort ">
+  <label for="sort-option">Sort By:</label>
+  <form action="/sort" method="post" class="sort-form">
+    <select id="sort-option" name="sort">
+      <option value="title">Title</option>
+      <option value="review_date">Recency</option>
+      <option value="rating">Rating</option>
+    </select>
+    <button id="sort-btn" type="submit">Sort</button>
+  </form>
+
+</div>
+
+<div class="container books">
+  <% locals.books.forEach(book => { %>
+         <div class="book">
+          <a href="/notes/<%= book.id %>" class="book-cover">
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.cover_isbn %>-M.jpg" alt="book-cover"/>
+          </a>
+            <div class="book-details">
+        
+              <a href="/notes/<%= book.id %>" class="book-title">
+                <h2>
+                  <%= book.title %>
+                </h2>
+              </a>
+        
+  
+              <small id="date">
+                <%= book.review_date %>
+              </small>
+  
+              <p>
+                <%= book.review_text %>
+              </p>
+              <div class="rating-container">
+                <p class="rating"><b>Rating:</b></p>
+                <% for (let i = 0; i < book.rating; i++) { %>
+                  <span class="fa fa-star checked"></span>
+                <% } %>  
+                <% if(book.rating < 5){ %>
+                  <% for ( let i=0; i < (5-book.rating); i++) { %>
+                      <span class="fa fa-star"></span>
+                      <% } %>
+                <% } %>
+              </div>
+
+              <div class="button-container">
+                <a href="/edit/<%= book.id %>">
+                  <button id="edit-btn" type="submit" name="editBookId" value="<%=book.id%>">Edit</button>
+                </a>
+
+                <form id="delete" action="/delete" method="post">
+                  <button id="delete-btn" type="submit" name="deleteBookId" value="<%=book.id%>">Delete</button>
+                </form>
+               
+              </div>
+  
+            </div>
+
+          </div>
+        <% })%>
+        
+  
+</div>
+
+
+
+<%- include('partials/footer.ejs') %>

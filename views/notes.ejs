@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container notes">
+  <h1 class="mynotes-title">My notes</h1>
+  <div class="note">
+   <div class="cover-note">
+      <img src="https://covers.openlibrary.org/b/isbn/<%=coverIsbn %>-M.jpg" alt="book-cover"/>
+   </div>
+    
+    <div class="note-details">
+      <p>
+        <%=notes %>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+   
+
+<%- include('partials/footer.ejs') %>
