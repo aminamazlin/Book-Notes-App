@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "booknotes",
-  password: "Bingenstraat1!",
+  database: " ",
+  password: " ",
   port: 5432,
 });
 db.connect();
