@@ -12,11 +12,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
+  user: " ",
+  host: " ",
   database: " ",
   password: " ",
-  port: 5432,
+  port: ,
 });
 db.connect();
 
